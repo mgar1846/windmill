@@ -14,10 +14,11 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Build Windmill CLI / Worker
+        working-directory: ./backend
         run: cargo build --release --bin windmill
 
       - name: Upload Windows Binary
         uses: actions/upload-artifact@v4
         with:
           name: windmill-windows-exe
-          path: target/release/windmill.exe
+          path: backend/target/release/windmill.exe
