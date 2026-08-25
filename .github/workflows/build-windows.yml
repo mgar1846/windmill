@@ -1,0 +1,23 @@
+name: Build Windows Worker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build Windmill CLI / Worker
+        run: cargo build --release --bin windmill
+
+      - name: Upload Windows Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: windmill-windows-exe
+          path: target/release/windmill.exe
