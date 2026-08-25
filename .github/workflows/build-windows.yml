@@ -1,4 +1,4 @@
-name: Build Windows Worker
+name: Build Windows Worker mx
 
 on:
   workflow_dispatch:
